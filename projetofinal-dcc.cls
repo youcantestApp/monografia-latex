@@ -221,7 +221,7 @@
       \MakeUppercase{\@authora}\\
       \@ifundefined{@authorb}{}{\MakeUppercase{\@authorb}\\}
       \@ifundefined{@authorc}{}{\MakeUppercase{\@authorc}\\}
-      \vspace{\stretch{4}}{\large\textbf{\@title}\par}
+      \vspace{\stretch{4}}{\large\textbf{\@title \linebreak}\par}
       \vfill
     }
   }
@@ -247,7 +247,7 @@
     \clearpage
     \thispagestyle{empty}
     \bigskip
-    \centerline{\textbf{\large\@title}}
+    \textbf{\large\@title\linebreak}
     \bigskip
     \centerline{\textbf{\@authora}}
     \@ifundefined{@authorb}{}{
