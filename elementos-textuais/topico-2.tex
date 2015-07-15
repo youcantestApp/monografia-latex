@@ -33,7 +33,7 @@ Na parte inferior do quadro, encontra-se a área de experimentação. Temos duas
 
 A partir da suposição de maior risco, deve ser aplicado um experimento para provar a validade dessa suposição. Existem três métodos para isso:
 
-\textbf{Exporation:} Neste método, o objetivo consiste em ir para as ruas e tentar reproduzir o problema que foi suposto na hipótese. Esse problema é algo real? Existem formas de resolvê-lo? Quais? Podem ser realizadas entrevistas com os usuários em potencial para, assim, identificar quais são as ideias que eles possuem a respeito de outras possíveis soluções para o problema também. Qualquer uma dessas atividades servem para prover insumos na hora de criar uma solução.
+\textbf{Exploration:} Neste método, o objetivo consiste em ir para as ruas e tentar reproduzir o problema que foi suposto na hipótese. Esse problema é algo real? Existem formas de resolvê-lo? Quais? Podem ser realizadas entrevistas com os usuários em potencial para, assim, identificar quais são as ideias que eles possuem a respeito de outras possíveis soluções para o problema também. Qualquer uma dessas atividades servem para prover insumos na hora de criar uma solução.
 
 \textbf{Pitch:} O objetivo deste consiste no avaliador expor a ideia proposta para solucionar o problema e obter feedback dos usuários em potencial. De forma a descobrir o quanto eles pagariam, se pagariam, por utilizar essa solução e quanto.
 
@@ -46,8 +46,6 @@ Depois de definir qual será o método de teste a ser utilizado, é necessário 
 Após toda a etapa de definição, deve-se "sair do prédio"  e realizar os experimentos necessários para a validação das premissas, conversando com pessoas reais de forma a por em prática o método de teste definido. 
 
 A próxima fase consiste em determinar se os resultados alcançaram ou não o critério mínimo de sucesso, movendo a suposição para o campo validado ou invalidado. Caso ela seja invalidada, pode-se pivotar as hipóteses e reuniciar todo o processo. Caso contrário, o processo pode ser reiniciado com a próxima hipótese de maior risco, caso exista.
-
-O Validation Board serviu como uma ótima opção para testar a nossa ideia, visto que ele torna possível acertar o quanto antes se o caminho a ser seguido é realmente o melhor, ou não.
 
 \section{Aplicação do Validation Board}\label{sec:LABEL_CHP_2_SEC_B}
 
@@ -99,13 +97,52 @@ Desenvolvedores querem testar seus sistemas com uma ferramenta disponível na nu
 
 \subsection{Experimentação}
 
-Para realizar as nossas experimentações, definimos o método de teste \emph{Exploration}, onde criamos um formulário com perguntas a serem aplicadas nos nossos possíveis clientes. Utilizamos como canal de aplicação dessa pesquisa grupos de desenvolvedores no Facebook (NodeJS Brasil, Angular Brasil, Javascript Brasil, Javascript Brasil, etc).
+Para realizar as nossas experimentações, definimos o método de teste \emph{Exploration}, onde criamos um formulário com perguntas a serem aplicadas nos nossos possíveis clientes. Utilizamos como canal de aplicação desse formulário grupos de desenvolvedores no Facebook (NodeJS Brasil, Angular Brasil, Javascript Brasil, Javascript Brasil, etc).
 
-\subsubsection{Pesquisa}
+\subsubsection{Aplicação}
 A pesquisa foi formulada com um conjunto de perguntas que julgamos interessantes para identificar o perfil do desenvolvedor brasileiro, e por consequência, validar a nossa hipótese.
 
+\textbf{Perguntas do formulário aplicado:}
+\begin{enumerate}
+\item Em qual linguagem o desenvolvedor possuia experiência mais sólida;
+\item Se nos projetos em que o desenvolvedor participava, eram executados testes e de que tipo;
+\item Qual o valor que o desenvolvedor dava a possuir testes nos seus projetos;
+\item Quais eram os tipos de problemas que ele costumava enfrentar na hora de desenvolver alguma forma de automatização desses testes;
+\item Qual era o nível de conforto que ele sentia na hora de desenvolver os testes no seu projeto;
+\item Quais eram as dificuldades que ele encontrava para desenvolver testes automatizados
+\end{enumerate}
+
 \subsubsection{Critério mínimo de sucesso}
+A partir dessas perguntas, mapeamos que para que a nossa hipótese fosse validada seria necessário que atingíssemos os seguintes critérios:
 
+\begin{itemize}
+\item Conseguir que, no mínimo, 40 desenvolvedores respondessem ao questionário;
+\item Dentre esses desenvolvedores, no mínimo 60\% deveria responder que achava relevante, muito relevante ou extremamente relevante o valor dos testes nos projetos em que participavam
+\item Além disso, no mínimo 60\% dos desenvolvedores não deveriam se sentir suficientemente confortáveis para desenvolver seus próprios testes
+\end{itemize}
 
-\section {Resultados}
+\subsection {Resultados}
+Após a aplicação do método de exploração, conseguimos, com o auxílio da divulgação da pesquisa em grupos de desenvolvedores no Facebook, 204 resultados; o que satisfez o nosso primeiro critério. Quanto aos outros resultados quantitativos percebemos que:
 
+\begin{itemize}
+\item 86\% dos entrevistados consideravam o uso de testes em projetos relevante;
+\item 62\% dos entrevistados não se sentem suficientemente confortáveis para desenvolver seus próprios testes
+\end{itemize}
+
+Com esses resultados, validamos a nossa hipótese de maior risco. De forma a também nos permitir adquirir um número maior de informação qualitativa sobre as dificuldades que esse público alvo possui em comum, o que serviu de insumos extras para o desenvolvimento da nossa aplicação. Dentre eles:
+
+\begin{itemize}
+\item 50\% dos projetos em que os entrevistados participaram, eram executados testes manuais pelos próprios ou por terceiros;
+\item Somente 18\% dos desenvolvedores possuiam uma infra-estrutura para executar testes integrados;
+\item Mais de $\frac{1}{3}$ dos entrevistados afirmaram que era difícil montar um ambiente de testes automatizados, e outro $\frac{1}{3}$ não possui conhecimento para configurar um;
+\item 40\% desses desenvolvedores possuem superiores ou clientes que não dão valor a ter sistemas testados automaticamente  
+\end{itemize}
+
+\begin{figure}
+  \centering
+  \includegraphics[width=1.1\textwidth]{imagens/results.png}
+  \caption{Resultados da pesquisa aplicada}
+  \label{fig:LABEL_FIG_5}
+\end{figure}
+
+Podemos perceber que o Validation Board serviu como uma ótima opção para testar a nossa ideia, visto que ele torna possível acertar o quanto antes se o caminho a ser seguido é realmente o melhor, ou não.
