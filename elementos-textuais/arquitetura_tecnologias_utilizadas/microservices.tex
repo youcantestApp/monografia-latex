@@ -1,0 +1,67 @@
+
+\subsubsection{Introdução}\label{sec:LABEL_CHP_4_SEC_B_SEC_A_SEC_A}
+
+Arquitetura de microservicos é uma maneira de construir uma aplicação como um conjunto de pequenos serviços, cada um sendo possuindo seu processo próprio e trocando informações à partir de mecanismos de comunicação leves, como protocolos HTTP[1] ou AMQP[2]. Esses serviços são construídos à partir das necessidades da aplicação e são independentes, tanto em sua construção, quanto em sua entrega(deploy ?). Pode uma centralização mínima para a gerência desses serviços, que podem ser escritos em linguagens diferentes entre e utilizar-se de ferramentas escolhidas independentemente, como banco de dados e monitoramento.
+
+
+\subsubsection{Arquitetura monolítica}\label{sec:LABEL_CHP_4_SEC_B_SEC_A_SEC_B}
+
+Para explicar o conceito de microservicos, é interessante fazermos um paralelo com a arquitetura monolítica: o desenvolvimento de toda a aplicação em apenas um módulo.
+Toda as partes de uma aplicação, como a interface, a comunicação com o banco de dados, e as lógicas de negócio, estão contidas em um único monolito, um bloco único lógico de execução. Com essa característica, quaisquer mudanças, por menor que sejam, acarretará em um nova compilação e deploy(?) a aplicação completa. 
+
+Aplicações com essa característica são a maneira usual de desenvolvimento. Com apenas um processo, a gerência e a infraestrutura dessa aplicação torna-se mais natural, e torna o desenvolvimento da aplicação da forma mais simples, com classes, funções e módulos. A escalabilidade de sistemas com essa característica também é fácil, consiste  apenas em executar diversas instâncias iguais da aplicação, chamada de escalabilidade horizontal.
+
+A arquitetura monolítica, apesar de ser suficiente, está sendo menos utilizada ao passar do tempo. Com a mudança no paradigma de construções de aplicação, que passou de grandes entregas de produto em tempos bem espaçados, para entregas menores e mais rápidas, muitas vezes um ciclo de desenvolvimento é focado em apenas um aspecto, ou pedaço do software. Em uma arquitetura monolítica, é necessário entregar uma versão nova de todo o produto, e não apenas da parte incrementada. 
+Além disso, softwares de característica monolítica, mesmo com uma gerência do código boa e seguindo boas práticas, tendem a ficar mais difíceis de se manter organizados e limpos ao longo do tempo, tornando a manutenção e o desenvolvimento de novas características mais caro e custoso.
+
+
+\subsubsection{Arquitetura de microserviços}\label{sec:LABEL_CHP_4_SEC_B_SEC_A_SEC_C}
+
+Não há uma definição formal do termo 'arquitetura de microserviços'. Oque podemos aferir é que essa arquitetura é constituída por um conjunto de características comuns vistas diversos sistemas. 
+De uma maneira geral, nem todos os sistemas possuidores dessa arquitetura possuem todos esses atributos, mas esperamos que em uma arquitetura de micro serviços os mesmos possuam uma grande parte desses elementos.
+
+\begin{enumerate}
+
+\item Componentização via serviços
+
+A definição de componente em nosso contexto é uma unidade de software que é independentemente substituível e atualizável. Esse conceito de componente vem sido evoluído nas últimas décadas e já é difundido entre praticamente todas a plataformas e linguagens.
+Microserviços se utilizam também de componentização em sua implementação, mas sua forma principal de unidade são a disponibilização de serviços.
+Definimos bibliotecas como parte integrante do software, cuja comunicação é por meio de chamadas de funções que estão em memória.Utilizamos bibliotecas em praticamente todo o desenvolvimento de software atual.
+Em contra-partida, serviços são definidos por sua utilização vem por meio de mecanismos de comunicação externos, como chamadas via protocolos HTTP ou chamadas procedurais, por exemplo, que são fora do processo principal da aplicação que quer se utilizar do serviço.
+Um dos principais motivos da utilização de serviços em detrimento de bibliotecas, é a facilidade de atualização e substituição, como já citado. Além disso, serviços são 'deployados' independentes.  Uma biblioteca, para ser atualizada, é necessário uma reinstalação completa do processo que a utiliza. Porém, ao se utilizar de serviços, é possível que nenhuma outra aplicação precise ser alterada ou instalada para que o serviço em questão seja atualizado.
+
+\item Lógicas complexas em canais de comunicação simples
+	
+Em uma aplicação monolítica, a comunicação entre componentes é feita por invocação de métodos ou funções. Isso pode causar alguns problemas de performance, pela possível complexidade de chamadas em memória que a comunicação com as bibliotecas pode causar.
+Em uma arquitetura de microserviços, é utilizado o conceito de "lógicas complexas em canais de comunicação simples". Isso significa que a comunicação é facilitada entre a aplicação e o serviço destino, deixando a complexidade encapsulado no serviço.
+Essa comunicação é feita por protocolos simples. Os mais comuns são o protocolo HTTP de requisição e resposta, com uma API(DENIFIR API na parte de definicoes!!!) e troca de mensagens enxutas.
+Outro protocolo bastante utilizado é o protocolo de de mensagem através de um barramento leve de mensagens. Ferramentas como o RabbitMQ e o ZeroMQ são  utilizadas para gerenciar essas mensagens e tornar a implementação ainda mais facilitada.
+
+
+\item Design Evolutivo
+
+	Quando se decide pela quebra de um software em componentes, é natural a dúvida sobre quais partes separar. A decisão mais correta se dá quando cada um dos 'pedaços' possui noções independência, de possibilidade de substituição e de evolução contínua. 
+Isso implica que se pode imaginar uma reconstrução de um componente sem afetar os outros participantes do software. Dessa maneira, fica clara a possibilidade de evolução contínua que esse componente pelo time, sem impactar no software inteiro. 
+	Com essa característica evolutiva, é possível que um time possa planejar a longo prazo iterações sobre o componente do produto, e gerar entregáveis pequenos e em espaço curto de tempo, pois suas entregas são independentes do resto do sistema.
+
+\item Design para falhas
+
+	Como consequência da divisão em componentes, cada aplicação precisa ser desenvolvida para responder a falhas de outros serviços.Por isso, A complexidade no desenvolvimento de cada componente é aumentada para se tratar essas possíveis falhas, quando se comparado ao processo de monolitos. 
+Serviços podem sofrer instabilidade e ainda sim, é possível entregar uma experiência consistente para o usuário final. Além disso, cada aplicação é muito mais conciente de quais são os fluxos alternativos de seus respectivos serviços, e como contornar cada um deles.
+
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+baseado em  : http://martinfowler.com/articles/microservices.html
+http://martinfowler.com/microservices
+http://www.infoq.com/articles/microservices-intro
+
+

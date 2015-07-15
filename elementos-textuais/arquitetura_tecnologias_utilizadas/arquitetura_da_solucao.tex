@@ -1,0 +1,24 @@
+\subsubsection{Introdução}\label{sec:LABEL_CHP_4_SEC_B_SEC_B_SEC_A}
+    
+    Baseando-se nos conceitos apresentados de microserviços, decidimos construir nossa aplicação como um conjunto de pequenas serviços, cada qual com sua responsabilidade definida, se comunicando por protocolos leves.
+    A seguir, vamos definir os serviços componentes da nossa aplicação:
+    
+    
+\subsubsection{Descrição dos componentes}\label{sec:LABEL_CHP_4_SEC_B_SEC_B_SEC_B}
+
+\begin{enumerate}
+
+\item Aplicação web
+
+    O primeiro componente é uma aplicação web, cujo objetivo é ter uma interface direta com o usuário. Ela é responsável por todos o cadastro de testes e agendamento dos mesmos. Também é responsável por apresentar todos os resultados obtidos a cada teste.
+    --->>> acho que aqui talvez entre alguns fluxos, telas e tal
+    
+\item {Agendador de testes}
+
+    Esse módulo é responsável pela monitoração de testes agendados, e por colocar cada um deles na fila de testes a serem executados. Fica em execução com intervalos regulares, verificando quais testes deverão ser executados naquele horário.  
+
+\item {Worker de execução de testes}
+
+    É responsavel por  executar recebidos e persistir os resultados, bem como o resultado final da execução. O desparo de cada um dos testes é feito a partir do monitoramento da fila de testes a serem executados.
+    
+\end{enumerate}
